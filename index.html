@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Poster Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background: #000000;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: aliceblue;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 400px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* IMPORTANT - same size look */
+        }
+
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .popup img {
+            width: auto;
+            height: auto;
+            max-width: 70vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="text-3xl text-purple-400 text-center font-bold" style="font-family:'Playfair Display', serif;">
+        Visual Design Poster's
+    </h1>
+
+
+    <div class="gallery">
+
+        <div class="card" onclick="openImage(this)">
+            <img src="poster1.png">
+        </div>
+
+        <div class="card" onclick="openImage(this)">
+            <img src="poster2.png">
+        </div>
+
+        <div class="card" onclick="openImage(this)">
+            <img src="poster3.png">
+        </div>
+
+        <div class="card" onclick="openImage(this)">
+            <img src="poster5.png">
+        </div>
+
+    </div>
+
+    <div class="popup" id="popup" onclick="closeImage()">
+        <img id="popupImg">
+    </div>
+
+    <script>
+
+        function openImage(card) {
+            let img = card.querySelector("img").src;
+            document.getElementById("popupImg").src = img;
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closeImage() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html>
